@@ -6,7 +6,7 @@ export default {
     dx: 5,
     dy: 5,
     rad: 15,
-    speed: 10,
+    speed: 15,
   },
   brickObj: {
     x: 0.5,
@@ -14,7 +14,7 @@ export default {
     width: 800 / 10 - 1,
     height: 20,
     density: 2,
-    colors: ("blue", "lightblue"),
+    colors: ["blue", "lightblue"],
   },
   player: {
     name: "PlayerName",

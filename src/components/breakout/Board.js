@@ -36,7 +36,7 @@ export default function Board() {
 
       BallMovement(ctx, ballObj);
 
-      WallCollision(ballObj, canvas);
+      WallCollision(ballObj, canvas, player);
 
       let brickCollision;
 
@@ -51,7 +51,7 @@ export default function Board() {
             ballObj.dy *= -1;
             bricks[i].broke = true;
           }
-          // player.score += 10;
+          player.score += 10;
         }
       }
 

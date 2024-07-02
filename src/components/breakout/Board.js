@@ -5,9 +5,11 @@ import WallCollision from "../utils/WallCollision";
 import Paddle from "./Paddle";
 import Brick from "./Brik";
 import BrickCollision from "../utils/BrickCollision";
+import PaddleHit from "../utils/PaddelHit";
+import PlayerStats from "./PlayerStats";
 
 let bricks = [];
-let { ballObj, paddleProps, brickObj } = data;
+let { ballObj, paddleProps, brickObj, player } = data;
 
 export default function Board() {
   const canvasRef = useRef(null);
@@ -16,6 +18,7 @@ export default function Board() {
     const render = () => {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");
+      paddleProps.y = canvas.height - 20;
 
       let newBrickSet = Brick(2, bricks, canvas, brickObj);
 
@@ -24,6 +27,8 @@ export default function Board() {
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      PlayerStats(ctx, player, canvas);
 
       bricks.map((brick) => {
         return brick.draw(ctx);
@@ -51,6 +56,9 @@ export default function Board() {
       }
 
       Paddle(ctx, canvas, paddleProps);
+
+      //Panel + Ball collision
+      PaddleHit(ballObj, paddleProps);
 
       requestAnimationFrame(render);
     };

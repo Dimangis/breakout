@@ -1,6 +1,6 @@
 {
   "name": "breakout",
-  "version": "0.9.0",
+  "version": "0.9.5",
   "homepage": "https://dimangis.github.io/breakout",
   "private": true,
   "dependencies": {

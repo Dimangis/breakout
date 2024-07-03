@@ -46,6 +46,7 @@ export default function Board() {
         player.lives = 5;
         player.level = 1;
         player.score = 0;
+        brickObj.y = 50;
         ResetBall(ballObj, canvas, paddleProps);
         bricks.length = 0;
       }

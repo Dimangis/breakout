@@ -1,4 +1,4 @@
-import data from "../../data";
+import data from "../data";
 import ResetBall from "./ResetBall";
 
 export default function AllBroken(bricks, player, canvas, ballObj) {

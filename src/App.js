@@ -1,5 +1,5 @@
 import "./App.css";
-import Breakout from "./components/breakout";
+import Breakout from "./components";
 
 function App() {
   return (

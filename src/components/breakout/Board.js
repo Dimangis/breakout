@@ -7,6 +7,8 @@ import Brick from "./Brik";
 import BrickCollision from "../utils/BrickCollision";
 import PaddleHit from "../utils/PaddelHit";
 import PlayerStats from "./PlayerStats";
+import AllBroken from "../utils/AllBroke";
+import ResetBall from "../utils/ResetBall";
 
 let bricks = [];
 let { ballObj, paddleProps, brickObj, player } = data;
@@ -20,7 +22,7 @@ export default function Board() {
       const ctx = canvas.getContext("2d");
       paddleProps.y = canvas.height - 20;
 
-      let newBrickSet = Brick(2, bricks, canvas, brickObj);
+      let newBrickSet = Brick(player.level, bricks, canvas, brickObj);
 
       if (newBrickSet && newBrickSet.length > 0) {
         bricks = newBrickSet;
@@ -36,7 +38,19 @@ export default function Board() {
 
       BallMovement(ctx, ballObj);
 
-      WallCollision(ballObj, canvas, player);
+      AllBroken(bricks, player, canvas, ballObj);
+
+      if (player.lives === 0) {
+        alert("Game Over! Press ok to restart");
+
+        player.lives = 5;
+        player.level = 1;
+        player.score = 0;
+        ResetBall(ballObj, canvas, paddleProps);
+        bricks.length = 0;
+      }
+
+      WallCollision(ballObj, canvas, player, paddleProps);
 
       let brickCollision;
 
